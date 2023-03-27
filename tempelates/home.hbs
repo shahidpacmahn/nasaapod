@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+<div id="output"></div>
+   
+    <h1>Picture of The day</h1>
+    <section id="media-section">
+     </section>
+
+    
+    
+</body>
+<script>
+    
+    const imageSection =`<a id="hdimg" href="" target="-blank">
+     <div class="image-div">
+     <img id="image_of_the_day" src="" alt="image-by-nasa">
+     </div>
+    </a>`
+
+    const videoSection=`<div class="video-div"> <iframe id="videoLink" src="" frameborder="0"></iframe></div>`
+   const mediaSection = document.querySelector("#media-section");
+
+function rss_fetch(){
+fetch("https://api.nasa.gov/planetary/apod?api_key=fxQYLlhyQHXJSd9VkkwWV2CFFRAfF2Bfy7m29AQx", {
+  
+})
+  .then(response => response.json())
+  .then(m=>{console.log(m);displaydata(m)})
+
+
+  
+}
+
+function displaydata(data){
+    if(data.media_type=="video"){
+     mediaSection.innerHTML=videoSection;
+     document.getElementById("videoLink").src=data.url;
+
+     }else{
+     mediaSection.innerHTML=imageSection;
+     document.getElementById("hdimg").href=data.hdurl;
+     document.getElementById("image_of_the_day").src=data.url;
+     }
+}
+
+rss_fetch();
+</script>
+</html>
