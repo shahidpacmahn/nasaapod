@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 mongoose.set('strictQuery', false)
 
-mongoose.connect("mongodb://127.0.0.1:27017/LogInCollection")
+mongoose.connect("mongodb+srv://shahidpacmahn:jQfUwHb8BzMs8qCA@login.cmqvwzu.mongodb.net/?retryWrites=true&w=majority")
 .then(()=>{
     console.log('mongoose connected');
 })
